@@ -37,29 +37,27 @@
 
     // ciclo per generare numeri salvavita
     while (dead == false && scores < 84) {
-      player = parseInt(prompt('Scegli un numero da 1 a 100.'));
       console.log('Numero scelto: ' + player);
-
-      if (player < 0 && player < 101 && !isNan(player)) {
+      player = parseInt(prompt('Scegli un numero da 1 a 100.'));
+      if (player > 0 && player < 101 && !isNaN(player)) {
         if (numberPlayer.includes(player) == true) {
           alert('Errore! Numero già inserito.');
-        } else if (mineArray.includes(player) == true) {
+        } else if (minesArray.includes(player) == true) {
           alert('Mina anti-uomo! Sei morto!');
-          dead == true;
+          dead = true;
           numberPlayer.push(player);
         } else {
           alert('Sei ancora vivo!');
           numberPlayer.push(player);
           scores++;
         }
-
       }else {
         alert('Il valore inserito è errato. Riprova.');
       }
     }
     console.log('Numeri scelti: ' + player);
 
-    // condizioni morte
+    // condizioni di morte
     if (dead == true) {
       console.log('Punteggio: ' + scores + 'punti');
       console.log('Numero della morte: ' + (numberPlayer.slice(-1)[0]));
